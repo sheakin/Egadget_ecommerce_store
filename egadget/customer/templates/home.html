@@ -1,0 +1,83 @@
+  {% extends 'nav.html' %}
+
+  {% block nav %}
+
+  {% load static %}
+
+
+  {% if messages %}
+  {% for i in messages %}
+  {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div class="alert alert-success mt-2">
+          {{i}}
+      </div>
+  {% endif %}
+  {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div class="alert alert-danger mt-2">
+          {{i}}
+      </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+    <h1 class="text" style="color: cadetblue;">𝕨𝕖𝕝𝕔𝕠𝕞𝕖 𝕥𝕠 𝕖𝕘𝕒𝕕𝕘𝕖𝕥𝕤 <span class="text-warning">{{request.user.first_name}} {{request.user.last_name}}</span></h1>
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/ecomm1.avif' %}" class="d-block w-100" style="height: 400px;" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/ecomm2.avif' %}" class="d-block w-100" style="height: 400px;" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/ecomm3.jpg' %}" class="d-block w-100" style="height: 400px;" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+      <div class="w-100 p-2 mt-2 d-flex justify-content-evenly">
+        <div class="card" style="width: 18rem;">
+          <img src="https://images.samsung.com/is/image/samsung/assets/in/smartphones/galaxy-s24-ultra/1536x920.jpg?imbypass=true" 
+          class="card-img-top" width="100%" height="200px" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Smart Phones</h5>
+            <a href="{% url 'prod' 'Smart phone' %}" class="stretched-link"></a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-cUmUiDP7Qu1IFTjLr7UFbR4ULa6MJn8WDA&s" 
+          class="card-img-top" width="100%" height="200px" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Tabltes</h5>
+            <a href="{% url 'prod' 'Tablets' %}" class="stretched-link"></a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="https://img.tatacliq.com/images/i11/658Wx734H/MP000000014437862_658Wx734H_202306222235061.jpeg" 
+          class="card-img-top" width="100%" height="200px" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Smart Watches</h5>
+            <a href="{% url 'prod' 'Smart Watch' %}" class="stretched-link"></a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="https://dlcdnwebimgs.asus.com/files/media/32AC71C1-A967-4B4A-A81C-23AB82184698/v3/images/large/1x/pic_laptop_flow_x16.jpg" 
+          class="card-img-top" width="100%" height="200px" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Laptops</h5>
+            <a href="{% url 'prod' 'Laptop' %}" class="stretched-link"></a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+  {% endblock nav %}

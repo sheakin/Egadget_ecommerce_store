@@ -1,0 +1,48 @@
+{% extends 'nav.html' %}
+{% block nav %}
+<div class="container-fluid">
+    <h2>Order List</h2>
+    {% if messages %}
+    {% for i in messages %}
+    {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success mt-2">
+            {{i}}
+        </div>
+    {% endif %}
+    {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger mt-2">
+            {{i}}
+        </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% for i in orders %}
+    <div class="row border border-3 border-dark shadow rounded mb-5 p-4" >
+        <div class="col">
+            <img src="{{i.product.image.url}}" alt="ping" height="200px">
+        </div>
+            <div class="col">
+            <h4>{{i.product.title}}</h4>
+            <p>{{i.product.price}}</p>
+            <p>{{i.date}}</p>
+
+            <div class="d-flex justify-content-between">
+                {% if i.status == 'Shipped' %}
+                <h3 class="text-warning">{{i.status}}</h3>
+                {%endif%}
+                {% if i.status == 'Out For Delivery' %}
+                <h3 class="text-info">{{i.status}}</h3>
+                {%endif%}                
+                {% if i.status == 'Delivered' %}
+                <h3 class="text-success">{{i.status}}</h3>
+                {%endif%}
+                {% if i.status == 'Order placed' or i.status == 'Shipped' %}
+                <a href="{% url 'corder' i.id %}"  onclick="return confirm('Are you sure?')" class="btn btn-danger">Cancel order</a>
+                {%endif%}
+            </div>
+            </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock nav %}

@@ -1,0 +1,21 @@
+{% extends 'nav.html' %}
+{% block nav %}
+<h1>Products</h1>
+<div class="p-5 m-3 row">
+  {% for i in data %}
+  <div class="card shadow me-3 mb-4" style="width: 18rem">
+    <img
+      src="{{i.image.url}}"
+      class="card-img-top"
+      alt="pro_img"
+      height="200px"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{i.title}}</h5>
+      <p class="card-text">{{i.price}}</p>
+      <a href="{% url 'det' i.id %}" class="stretched-link"></a>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+{% endblock nav %}
